@@ -90,7 +90,7 @@ college-complaint-portal/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/payalkale96k-eng/college-complaint-portal.git
+git clone https://github.com/payalkale96k-eng/College-Complaint-Portal
 ```
 
 ### 2. Open the project
