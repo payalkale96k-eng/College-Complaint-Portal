@@ -193,32 +193,12 @@ The current version is a frontend/local-storage prototype. Future versions can i
 
 ---
 
-## 📸 Screenshots
 
-Add screenshots of your project here after uploading them to the repository.
-
-Example:
-
-```markdown
-![Dashboard](screenshots/dashboard.png)
-```
-
-Recommended screenshots:
-
-* Dashboard
-* Submit Complaint page
-* My Complaints page
-* Complaint Details popup
-* Mobile responsive view
-
----
 
 ## 🌐 Live Demo
 
 🔗 **Live Demo:**
-`https://YOUR-USERNAME.github.io/college-complaint-portal/`
 
-> Enable **GitHub Pages** to make your project available online.
 
 ---
 
@@ -255,9 +235,6 @@ Interested in:
 
 ---
 
-## ⭐ Support
-
-If you find this project useful, consider giving the repository a ⭐ on GitHub!
 
 ---
 
