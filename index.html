@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Complaint Portal</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    
+    <aside class="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <div>
+                <h2>CampusCare</h2>
+                <span>Complaint Portal</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#" class="nav-link active" onclick="showSection('dashboard', this)">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+
+            <a href="#" class="nav-link" onclick="showSection('submit', this)">
+                <i class="fa-solid fa-file-circle-plus"></i>
+                Submit Complaint
+            </a>
+
+            <a href="#" class="nav-link" onclick="showSection('complaints', this)">
+                <i class="fa-solid fa-list-check"></i>
+                My Complaints
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button onclick="toggleTheme()" class="sidebar-btn">
+                <i class="fa-solid fa-moon"></i>
+                Dark Mode
+            </button>
+
+            <button onclick="logout()" class="sidebar-btn logout">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </button>
+        </div>
+
+    </aside>
+
+
+  
+    <main class="main">
+
+       
+        <header class="topbar">
+
+            <div>
+                <button class="mobile-menu" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <h1 id="pageTitle">Dashboard</h1>
+                <p>Welcome back, Student 👋</p>
+            </div>
+
+            <div class="profile">
+                <div class="notification">
+                    <i class="fa-regular fa-bell"></i>
+                    <span>3</span>
+                </div>
+
+                <div class="avatar">P</div>
+
+                <div class="profile-info">
+                    <strong>Student</strong>
+                    <small>SY AIDS</small>
+                </div>
+            </div>
+
+        </header>
+
+
+        
+        <section id="dashboard" class="section active-section">
+
+            <div class="welcome-card">
+
+                <div>
+                    <span class="welcome-label">CAMPUSCARE</span>
+                    <h2>Have an issue on campus?</h2>
+                    <p>
+                        Report it easily and track your complaint until it gets resolved.
+                    </p>
+
+                    <button class="primary-btn"
+                        onclick="showSection('submit', document.querySelectorAll('.nav-link')[1])">
+                        <i class="fa-solid fa-plus"></i>
+                        Submit Complaint
+                    </button>
+                </div>
+
+                <div class="welcome-icon">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+
+            </div>
+
+
+            
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-file-lines"></i>
+                    </div>
+
+                    <div>
+                        <span>Total Complaints</span>
+                        <h3 id="totalComplaints">0</h3>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+
+                    <div>
+                        <span>Pending</span>
+                        <h3 id="pendingComplaints">0</h3>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-spinner"></i>
+                    </div>
+
+                    <div>
+                        <span>In Progress</span>
+                        <h3 id="progressComplaints">0</h3>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+
+                    <div>
+                        <span>Resolved</span>
+                        <h3 id="resolvedComplaints">0</h3>
+                    </div>
+                </div>
+
+            </div>
+
+
+            
+            <div class="content-card">
+
+                <div class="card-header">
+                    <div>
+                        <h3>Recent Complaints</h3>
+                        <p>Your latest submitted complaints</p>
+                    </div>
+
+                    <button class="outline-btn"
+                        onclick="showSection('complaints', document.querySelectorAll('.nav-link')[2])">
+                        View All
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Complaint ID</th>
+                                <th>Subject</th>
+                                <th>Category</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="recentComplaints">
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        
+        <section id="submit" class="section">
+
+            <div class="form-card">
+
+                <div class="form-heading">
+                    <div class="heading-icon">
+                        <i class="fa-solid fa-file-circle-plus"></i>
+                    </div>
+
+                    <div>
+                        <h2>Submit a Complaint</h2>
+                        <p>Provide the details of your issue below.</p>
+                    </div>
+                </div>
+
+
+                <form id="complaintForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>Complaint Category *</label>
+
+                            <select id="category" required>
+                                <option value="">Select category</option>
+                                <option>Infrastructure</option>
+                                <option>Hostel</option>
+                                <option>Library</option>
+                                <option>Canteen</option>
+                                <option>Faculty</option>
+                                <option>Examination</option>
+                                <option>Transport</option>
+                                <option>Internet / Wi-Fi</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Priority *</label>
+
+                            <select id="priority" required>
+                                <option value="">Select priority</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group full">
+                            <label>Complaint Subject *</label>
+
+                            <input
+                                type="text"
+                                id="subject"
+                                placeholder="Example: Classroom fan is not working"
+                                required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Location *</label>
+
+                            <input
+                                type="text"
+                                id="location"
+                                placeholder="Example: Room 204"
+                                required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Date</label>
+
+                            <input
+                                type="date"
+                                id="date"
+                                required>
+                        </div>
+
+
+                        <div class="form-group full">
+                            <label>Description *</label>
+
+                            <textarea
+                                id="description"
+                                rows="6"
+                                placeholder="Describe your complaint in detail..."
+                                required></textarea>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button type="reset" class="cancel-btn">
+                            Clear
+                        </button>
+
+                        <button type="submit" class="primary-btn">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            Submit Complaint
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+       
+        <section id="complaints" class="section">
+
+            <div class="content-card">
+
+                <div class="card-header">
+                    <div>
+                        <h2>My Complaints</h2>
+                        <p>Track all your submitted complaints.</p>
+                    </div>
+
+                    <button class="primary-btn"
+                        onclick="showSection('submit', document.querySelectorAll('.nav-link')[1])">
+                        <i class="fa-solid fa-plus"></i>
+                        New Complaint
+                    </button>
+                </div>
+
+
+                <!-- Filters -->
+                <div class="filters">
+
+                    <div class="search-box">
+                        <i class="fa-solid fa-search"></i>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search complaints..."
+                            oninput="renderComplaints()">
+                    </div>
+
+
+                    <select id="statusFilter" onchange="renderComplaints()">
+
+                        <option value="All">All Status</option>
+                        <option value="Submitted">Submitted</option>
+                        <option value="Under Review">Under Review</option>
+                        <option value="Assigned">Assigned</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Resolved">Resolved</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Subject</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="complaintsTable">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <div id="detailsModal" class="modal">
+
+        <div class="modal-content">
+
+            <button class="close-btn" onclick="closeModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div id="modalBody"></div>
+
+        </div>
+
+    </div>
+
+
+    
+    <div id="toast" class="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMessage">Success</span>
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
